@@ -13,13 +13,16 @@ ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
+
+
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432,
+        'NAME': env('DB_NAME_PROD'),
+        'USER': env('DB_USER_PROD'),
+        'PASSWORD': env('DB_PASSWORD_PROD'),
+        'HOST': env('HOST_PROD'),
+        'PORT': env('PORT_PROD'),
     }
 }

@@ -4,7 +4,7 @@ from catalogues.settings.common import *
 SECRET_KEY = env('SECRET_KEY_DEV')
 
 # SECURITY WARNING: update this when you have the production host
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_DEV')
