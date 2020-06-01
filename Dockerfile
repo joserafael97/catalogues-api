@@ -1,8 +1,19 @@
+# pull official base image
 FROM python:3.8.3
 
-ENV PYTHONUNBUFFERED 1
-RUN mkdir /code
+# set work directory
 WORKDIR /code
-COPY requirements.txt /code/
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install dependencies
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt
-COPY . /code/
+
+# copy project
+COPY . .
+
+# Run the app.  CMD is required to run on Heroku
+CMD gunicorn catalogues.wsgi --log-file -
