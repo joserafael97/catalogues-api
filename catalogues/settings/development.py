@@ -1,6 +1,5 @@
 from catalogues.settings.common import *
 
-
 SECRET_KEY = os.getenv('SECRET_KEY_DEV')
 
 # SECURITY WARNING: update this when you have the production host
