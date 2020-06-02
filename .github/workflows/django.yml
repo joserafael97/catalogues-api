@@ -41,6 +41,6 @@ jobs:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
     - name: Update Migration
-      run:  python manage.py makemigrations --settings=catalogues.settings.production && python manage.py migrate --settings=catalogues.settings.production
+      run:  python manage.py collectstatic --noinput --clear && python manage.py makemigrations --settings=catalogues.settings.production && python manage.py migrate --settings=catalogues.settings.production
 
 
