@@ -16,10 +16,6 @@ ALLOWED_HOSTS = ['*']
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-print("======================os.getenv('DB_USER_PROD') :", os.getenv('DB_USER_PROD'))
-print("======================os.environ.get('DB_NAME_PROD'):", os.environ.get('DB_NAME_PROD'))
-
 # Database
 DATABASES = {
     'default': {
@@ -31,3 +27,8 @@ DATABASES = {
         'PORT': os.environ.get('PORT_PROD'),
     }
 }
+
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500

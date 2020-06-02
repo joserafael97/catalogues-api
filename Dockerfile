@@ -15,5 +15,9 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
+# Install assets
+RUN python manage.py collectstatic --noinput --clear
+
+
 # Run the app.  CMD is required to run on Heroku
 CMD gunicorn catalogues.wsgi --log-file -
