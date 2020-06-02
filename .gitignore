@@ -87,6 +87,9 @@ venv.bak/
 
 # mkdocs documentation 
 /site 
+catalogues/__pycache__/
+/vendor/migrations/
+\vendor\migrations\
 
 # mypy 
 .mypy_cache/ 
@@ -97,6 +100,7 @@ venv.bak/
 *.stTheme.cache 
 *.sublime-workspace 
 *.sublime-project 
+*.pyo
 
 # sftp configuration file 
 sftp-config.json 
