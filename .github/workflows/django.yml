@@ -40,6 +40,10 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+    - name: Makemigration
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run:  heroku run python manage.py makemigrations --settings=catalogues.settings.production -a ${{ secrets.HEROKU_APP_NAME }}
     - name: Update Migration
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
