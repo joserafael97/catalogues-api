@@ -1,9 +1,15 @@
+"""
+Module to create models to represent data in API
+
+"""
+
 from django.db import models
 from localflavor.br.models import BRCNPJField
 from django.core.validators import MinValueValidator
 
 
 class Vendor(models.Model):
+    """ Model to represent Vendor """
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=False)
     cnpj = BRCNPJField(unique=True, blank=False)
@@ -15,6 +21,7 @@ class Vendor(models.Model):
 
 
 class Product(models.Model):
+    """ Model to represent Products of Vendor """
     id = models.AutoField(primary_key=True)
     vendor = models.ForeignKey(Vendor, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
