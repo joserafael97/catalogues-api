@@ -7,7 +7,7 @@ class Vendor(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255, blank=False)
     cnpj = BRCNPJField(unique=True, blank=False)
-    city = models.CharField(max_length=255)
+    city = models.CharField(max_length=255, blank=True)
     create_at = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
@@ -19,7 +19,8 @@ class Product(models.Model):
     vendor = models.ForeignKey(Vendor, related_name='products', on_delete=models.CASCADE)
     name = models.CharField(max_length=255, blank=False)
     code = models.CharField(max_length=255, blank=False)
-    price = models.FloatField(verbose_name=u'The price cannot be less than zero', validators=[MinValueValidator(0.0)])
+    price = models.FloatField(verbose_name=u'The price cannot be less than zero',
+                              validators=[MinValueValidator(0.0)], default=0)
     create_at = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
