@@ -1,6 +1,4 @@
 from rest_framework import viewsets
-from django.http import HttpResponseNotFound
-import json
 
 from .serializers import VendorSerializer
 from .serializers import ProductSerializer
@@ -41,31 +39,27 @@ class ProductViewSet(viewsets.ModelViewSet):
 class VendorViewSet(viewsets.ModelViewSet):
     """
         retrieve:
-            Return a vendor instance.
+            Return a api instance.
 
         list:
             Return all vendors, ordered by most recently joined.
 
         create:
-            Create a new vendor.
+            Create a new api.
 
         delete:
-            Remove an existing vendor and products associated.
+            Remove an existing api and products associated.
 
         partial_update:
-            Update one or more fields on an existing vendor.
+            Update one or more fields on an existing api.
 
         update:
-            Update a vendor.
+            Update a api.
     """
 
     queryset = Vendor.objects.all().order_by('create_at')
     serializer_class = VendorSerializer
 
 
-def error404(request, exception):
-    response_data = {}
-    response_data['detail'] = 'Not found.'
-    return HttpResponseNotFound(json.dumps(response_data), content_type="application/json")
 
 

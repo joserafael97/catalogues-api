@@ -16,9 +16,10 @@ from dotenv import load_dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# # reading .env file
+# reading .env file
 project_folder = os.getcwd()
 load_dotenv(os.path.join(project_folder, '.env'))
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -34,7 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'vendor.apps.VendorConfig',
+    'api.apps.ApiConfig',
     'rest_framework',
     'rest_framework_swagger',
     'localflavor',

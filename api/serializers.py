@@ -1,3 +1,4 @@
+"""Module to serializers data in rest API"""
 from rest_framework import serializers
 from .models import Vendor
 from .models import Product
@@ -19,6 +20,13 @@ class VendorSerializer(serializers.HyperlinkedModelSerializer):
         fields = ['id', 'name', 'cnpj', 'products', 'city', 'create_at']
 
     def create(self, validated_data):
+        """Create Vendor with associated products.
+
+           Superscript default function to Save Vendor and
+           products with relationship.
+
+           Return Vendor and products saved.
+        """
         products_data = validated_data.pop('products')
         vendor = Vendor.objects.create(**validated_data)
         for product_data in products_data:
@@ -26,6 +34,13 @@ class VendorSerializer(serializers.HyperlinkedModelSerializer):
         return vendor
 
     def update(self, instance, validated_data):
+        """Update Vendor with associated products.
+
+           Superscript default function to Update Vendor and
+           products with relationship.
+
+           Return Vendor and products updated.
+        """
         products = validated_data.pop('products')
         product_items_dict = dict((i.id, i) for i in instance.products.all())
         instance.city = validated_data['city']

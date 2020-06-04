@@ -1,5 +1,4 @@
 from catalogues.settings.common import *
-import logging
 import dj_database_url
 
 

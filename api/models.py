@@ -1,8 +1,4 @@
-"""
-Module to create models to represent data in API
-
-"""
-
+"""Module to create models to represent data in API"""
 from django.db import models
 from localflavor.br.models import BRCNPJField
 from django.core.validators import MinValueValidator
