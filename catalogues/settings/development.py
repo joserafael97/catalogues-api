@@ -1,5 +1,15 @@
 from catalogues.settings.common import *
 
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:4200',
+]
+
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:4200',
+]
+
 SECRET_KEY = os.getenv('SECRET_KEY_DEV')
 
 # SECURITY WARNING: update this when you have the production host
