@@ -7,6 +7,9 @@ __pycache__
 db.sqlite3
 media
 
+**.db
+***.db
+
 # Backup files # 
 *.bak 
 
@@ -88,7 +91,7 @@ venv.bak/
 # mkdocs documentation 
 /site 
 catalogues/__pycache__/
-/vendor/migrations/
+/api/migrations/
 \vendor\migrations\
 
 # mypy 
