@@ -1,4 +1,6 @@
 from rest_framework import viewsets
+from django.http import HttpResponseNotFound
+import json
 
 from .serializers import VendorSerializer
 from .serializers import ProductSerializer
@@ -59,3 +61,11 @@ class VendorViewSet(viewsets.ModelViewSet):
 
     queryset = Vendor.objects.all().order_by('create_at')
     serializer_class = VendorSerializer
+
+
+def error404(request, exception):
+    response_data = {}
+    response_data['detail'] = 'Not found.'
+    return HttpResponseNotFound(json.dumps(response_data), content_type="application/json")
+
+
