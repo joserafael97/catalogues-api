@@ -1,5 +1,6 @@
 ![Django CI](https://github.com/joserafael97/catalogues-api/workflows/Django%20CI/badge.svg?branch=master)
-# catalogues-api
+# Catalogues-api
+API RESTful for managing vendors and products.
 
 ## Deployed links app
 
@@ -8,49 +9,84 @@
 * [Front-end deployed](https://catalogues-ui.herokuapp.com)
 
 ## Getting Started
+This project was developed on the Python language with the [Django](https://github.com/django) framework with the help of the [django-rest-framework](https://www.django-rest-framework.org/).
 
-Este projeto foi desenvolvido sobre a linguagem Javascript com a ferramenta [Puppeteer](https://github.com/GoogleChrome/puppeteer) para criação de Crawlers.
 
 ### Estructure
-
-A estrutura de diretórios do projeto está descrita abaixo 
+The project directory structure is described below
 
 ```bash
 .
-├── config                            # Arquivos de configurações do projeto, por exemplo configurações do banco de dados
-├── core                              # Arquivos de configurações do ambiente
-├── data                              # Arquivos contendo dados pré-definidos para gerar collections como palavras chaves
-├── db                                # Arquivos de gerenciamento de conexões com o banco de dados
-├── log                               # Arquivos de logs
-├── models                            # Models de dados e classes auxiliares
-├── proof                             # Diretório contendo printscreen com provas dos itens encontrados (criada automáticamente)
-├── utils                             # Classes utilitárias com functions para auxiliar durante a execução do crawler  
-├── bfs.js                            # Arquivo contendo lógica para execução de um BFS para varrer portais de transparência  
-├── api.js                            # Arquivo contendo end-points para acesso das avaliações  
-└── app.js                            # Aquivo principal para execução do Crawler
+├── .github/workflows                 # Stores file that triggers Github Action;
+├── api/...                           # Files containing API logic with routes to access vendors;
+├── catalogues/                       # Config files Django;
+      ├── settings/...                # Config files environment;
+      ├── ...                         # All files config;
+├── .env                              # Config file environment in develop mode;
+├── Dockerfile                        # Dockerfile to deploy;
+├── manage.py                         # Init config and run in develop mode;
+└── requirements.txt                  # Project dependecies.
 ```
 
 ### Prerequisites
+For the execution of the project, it is necessary to install the following tools
 
-Para a execução do projeto é necessário a instalação das seguintes ferramentas 
-
-* Python 3
+* Python 3 (used v3.8)
 * pip
-* PostgresSql
+* PostgresSql (used v11.x)
 
 ### Installing
-
-Para instalação das bibliotecas execute o comando abaixo dentro do diretório principal do repositório.
+To install the libraries, run the command below inside the main repository directory.
 
 ```
 pip install -r requirements.txt
 ```
 
-### Run Rest Api
+Besides, it is necessary to change the values of the variables defined in the [.env](https://github.com/joserafael97/catalogues-api/blob/master/.env) file located at the root of the project with their credentials for accessing the database, below it is an example:
+
+```
+SECRET_KEY_DEV=u!j$-o!5%3_5b97o^cmerce0koj!bkblzgs+bxg7p^zrywmsft
+DB_NAME_DEV=catalogues
+DB_USER_DEV=django
+DB_PASSWORD_DEV=devenv
+HOST_DEV=localhost
+PORT_DEV=5432
+DEBUG_DEV=True
+```
+
+To create the database tables, in terminal run:
+
+```
+python manage.py makemigraions && python manage.py makemigraions 
+```
+
+### Run API
 
 ```
 python manage.py runserver
 ```
+
+## Run API with diff environment config
+for the management of the different environments of the project, were specific files that add certain specificities:
+
+* [development](https://github.com/joserafael97/catalogues-api/blob/master/catalogues/settings/development.py) (default)
+* [tester](https://github.com/joserafael97/catalogues-api/blob/master/catalogues/settings/tester.py) (use Sqlite)
+* [production](https://github.com/joserafael97/catalogues-api/blob/master/catalogues/settings/production.py)
+
+to run the service with one of the environments manually, you can do, for example:
+
+```
+python manage.py runserver --settings=catalogues.settings.tester 
+```
+
+This is valid to migration operation and all in manage.py file.
+
+
+### Automatic Deploy
+This project uses Github Action to deploy the application to each new commit main branch. To do this, it uses the following file:
+
+* [.github/workflows/django.yml](https://github.com/joserafael97/catalogues-api/blob/master/.github/workflows/django.yml)
+
 
 ## Authors
 
