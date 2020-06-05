@@ -1,7 +1,7 @@
 """Module to create models to represent data in API"""
+from django.core.validators import MinValueValidator
 from django.db import models
 from localflavor.br.models import BRCNPJField
-from django.core.validators import MinValueValidator
 
 
 class Vendor(models.Model):

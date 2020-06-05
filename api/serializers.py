@@ -1,7 +1,8 @@
 """Module to serializers data in rest API"""
 from rest_framework import serializers
-from .models import Vendor
+
 from .models import Product
+from .models import Vendor
 
 
 class ProductSerializer(serializers.ModelSerializer):

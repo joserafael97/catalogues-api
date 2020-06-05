@@ -1,9 +1,7 @@
-from catalogues.settings.common import *
 import dj_database_url
+import datetime
 
-DJANGO_SUPERUSER_USERNAME="testecreated"
-DJANGO_SUPERUSER_PASSWORD="testecreated"
-
+from catalogues.settings.common import *
 
 DEBUG = os.environ.get('DEBUG_PROD')
 
@@ -14,17 +12,13 @@ DEBUG = os.environ.get('DEBUG_PROD')
 SECRET_KEY = os.environ.get('SECRET_KEY_PROD')
 
 
-
-
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
-
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ),
-
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
