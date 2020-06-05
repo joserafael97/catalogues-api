@@ -3,8 +3,9 @@
 
 ## Deployed links app
 
-![API docs](https://catalogues-api.herokuapp.com)
-![Main end-point](https://catalogues-api.herokuapp.com/api/vendors)
+* [API docs](https://catalogues-api.herokuapp.com)
+* [Main end-point](https://catalogues-api.herokuapp.com/api/vendors)
+* [Front-end deployed](https://catalogues-ui.herokuapp.com)
 
 ## Getting Started
 
