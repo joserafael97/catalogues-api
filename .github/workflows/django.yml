@@ -58,5 +58,7 @@ jobs:
       env:
         HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
       run:  heroku run  python manage.py collectstatic --noinput --clear -a ${{ secrets.HEROKU_APP_NAME }}
-
-
+    - name: Update collectstatic
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      run:  heroku run  python manage.py createsuperuserwithpassword --username catalogues-app --password 8f8adfb4e47b7d15eced0b3509b5e18c --email jose.rafael.feitosa@gmail.com --preserve --noinput --clear -a ${{ secrets.HEROKU_APP_NAME }}

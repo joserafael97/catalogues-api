@@ -1,4 +1,5 @@
 from django.urls import include, path
+from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token
 from rest_framework_nested import routers
 from . import views
 
@@ -15,5 +16,6 @@ vendors_router.register(r"products", views.ProductViewSet, basename="vendors-pro
 urlpatterns = [
     path('api/', include(router.urls)),
     path("api/", include(vendors_router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/auth/', obtain_jwt_token),
+    path('api/refresh-token/', refresh_jwt_token),
 ]
