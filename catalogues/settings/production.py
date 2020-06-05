@@ -10,9 +10,6 @@ DEBUG = os.environ.get('DEBUG_PROD')
 
 SECRET_KEY = os.environ.get('SECRET_KEY_PROD')
 
-# SECURITY WARNING: update this when you have the production host
-ALLOWED_HOSTS = ['*']
-
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 # Database
@@ -32,8 +29,14 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
-CORS_ORIGIN_WHITELIST = (
-    'https://catalogues-ui.herokuapp.com'
-)
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:80', 'https://catalogues-ui.herokuapp.com'
+]
+
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:80', 'https://catalogues-ui.herokuapp.com'
+]
+
+ALLOWED_HOSTS = ['*']
