@@ -29,14 +29,21 @@ db_from_env = dj_database_url.config()
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
 
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'http://localhost:80', 'https://catalogues-ui.herokuapp.com'
+    'http://localhost:80',
+    'https://catalogues-ui.herokuapp.com',
+    'http://catalogues-ui.herokuapp.com',
+    "http://localhost:8080",
+
 ]
 
 CORS_ORIGIN_REGEX_WHITELIST = [
-    'http://localhost:80', 'https://catalogues-ui.herokuapp.com'
+    'http://localhost:80',
+    'https://catalogues-ui.herokuapp.com',
+    'http://catalogues-ui.herokuapp.com',
+    "http://localhost:8080",
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ALLOWED_HOSTS = ['*']
